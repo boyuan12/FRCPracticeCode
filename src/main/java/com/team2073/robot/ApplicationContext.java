@@ -9,6 +9,7 @@ public class ApplicationContext {
     private CANSparkMax motor1;
     private CANSparkMax motor2;
     private Subsystem subsystem;
+    private SimulationSubsystem simulationSubsystem;
     private DigitalInput dI;
     private DigitalInput dI2;
     private final MotorType kMotorType = MotorType.kBrushless;
@@ -22,9 +23,16 @@ public class ApplicationContext {
         return instance;
     }
 
+    public SimulationSubsystem getSimulationSubsystem() {
+        if (simulationSubsystem == null) {
+            simulationSubsystem = new SimulationSubsystem();
+        }
+        return simulationSubsystem;
+    }
+
     public DigitalInput getdI() {
         if (dI == null) {
-            dI = new DigitalInput(9);
+            dI = new DigitalInput(0);
         }
         return dI;
     }

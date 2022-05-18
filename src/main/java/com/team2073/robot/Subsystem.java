@@ -1,13 +1,17 @@
 package com.team2073.robot;
 
 import com.revrobotics.CANSparkMax;
+import com.team2073.common.controlloop.PidfControlLoop;
 import com.team2073.common.periodic.AsyncPeriodicRunnable;
 import edu.wpi.first.math.MathUtil;
+import edu.wpi.first.networktables.NetworkTableEntry;
 import edu.wpi.first.wpilibj.AnalogPotentiometer;
 import edu.wpi.first.wpilibj.DigitalInput;
 import com.team2073.common.util.*;
 import edu.wpi.first.wpilibj.Servo;
 import edu.wpi.first.wpilibj.command.WaitCommand;
+import edu.wpi.first.wpilibj.shuffleboard.Shuffleboard;
+import edu.wpi.first.wpilibj.shuffleboard.ShuffleboardTab;
 
 public class Subsystem implements AsyncPeriodicRunnable {
     ApplicationContext appCTX = ApplicationContext.getInstance();
@@ -22,8 +26,8 @@ public class Subsystem implements AsyncPeriodicRunnable {
     int angle = 0;
     boolean timerRestart = true;
     DigitalInput first = appCTX.getdI();
-    AnalogPotentiometer p = new AnalogPotentiometer(2);
-    DigitalInput second = appCTX.getdI2();
+//    AnalogPotentiometer p = new AnalogPotentiometer(2);
+//    DigitalInput second = appCTX.getdI2();
     WaitCommand waitCommand = new WaitCommand(200);
     WaitCommand secondWait = new WaitCommand(1000);
     public Subsystem() {
@@ -51,7 +55,7 @@ public class Subsystem implements AsyncPeriodicRunnable {
 
     @Override
     public void onPeriodicAsync() {
-        System.out.println(p.get());
+//        System.out.println(first.get());
         //setSpeed(500);
         //getVelocity();
 //        servo.setAngle(0);
@@ -125,31 +129,31 @@ public class Subsystem implements AsyncPeriodicRunnable {
     public double calcRPM(double velocity) {
         return (Math.log(velocity) - 1.75) / 2.34E-4;
     }
-    public void getVelocity() {
-        if(first.get() && second.get()){
-            j++;
-        }else if (first.get()) {
-            if (!velocityFirstStopped) {
-                System.out.println("Started");
-                timer.start();
-                velocityFirstStopped = true;
-                velocityStopped = false;
-                velocityCycleNumber++;
-            }
-        }else if (second.get() && velocityFirstStopped) {
-            //System.out.println(timer.getElapsedTime() / 1000);
-            double velocity = 1.0/(timer.getElapsedTime()/1000d);
-            if (!velocityStopped) {
-                timer.stop();
-                System.out.println("Stopped");
-                System.out.println(velocity);
-                velocityStopped = true;
-                velocityCycleNumber++;
-            }
-        }
-        if (velocityCycleNumber % 2 == 0 && velocityCycleNumber != 0) {
-            velocityFirstStopped = false;
-        }
-    }
+//    public void getVelocity() {
+//        if(first.get() && second.get()){
+//            j++;
+//        }else if (first.get()) {
+//            if (!velocityFirstStopped) {
+//                System.out.println("Started");
+//                timer.start();
+//                velocityFirstStopped = true;
+//                velocityStopped = false;
+//                velocityCycleNumber++;
+//            }
+//        }else if (second.get() && velocityFirstStopped) {
+//            //System.out.println(timer.getElapsedTime() / 1000);
+//            double velocity = 1.0/(timer.getElapsedTime()/1000d);
+//            if (!velocityStopped) {
+//                timer.stop();
+//                System.out.println("Stopped");
+//                System.out.println(velocity);
+//                velocityStopped = true;
+//                velocityCycleNumber++;
+//            }
+//        }
+//        if (velocityCycleNumber % 2 == 0 && velocityCycleNumber != 0) {
+//            velocityFirstStopped = false;
+//        }
+//    }
 
 }
