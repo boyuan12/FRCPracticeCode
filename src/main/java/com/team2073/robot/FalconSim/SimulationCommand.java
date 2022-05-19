@@ -1,6 +1,7 @@
-package com.team2073.robot;
+package com.team2073.robot.FalconSim;
 
 import com.team2073.common.command.AbstractLoggingCommand;
+import com.team2073.robot.ApplicationContext;
 
 public class SimulationCommand extends AbstractLoggingCommand {
     @Override
@@ -18,9 +19,8 @@ public class SimulationCommand extends AbstractLoggingCommand {
     @Override
     protected void initializeDelegate() {
 //        ApplicationContext.getInstance().getSimulationSubsystem().updateGoal();
-//        ApplicationContext.getInstance().getSimulationSubsystem().setAllowMovement(true);
+        ApplicationContext.getInstance().getSimulationSubsystem().setAllowMovement(true);
         System.out.println("starting");
-        ApplicationContext.getInstance().getSimulationSubsystem().setOutput(0.5);
     }
 
 

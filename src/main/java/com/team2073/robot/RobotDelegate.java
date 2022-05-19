@@ -1,18 +1,11 @@
 package com.team2073.robot;
 
-import com.revrobotics.CANSparkMax;
-import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 import com.team2073.common.robot.AbstractRobotDelegate;
-import edu.wpi.first.wpilibj.TimedRobot;
-import edu.wpi.first.wpilibj.shuffleboard.Shuffleboard;
-import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-
-import java.util.Objects;
+import com.team2073.robot.FalconSim.SimulationSubsystemFalcons;
 
 public class RobotDelegate extends AbstractRobotDelegate {
     Subsystem subsystem;
-    SimulationSubsystem simulationSubsystem;
+    SimulationSubsystemFalcons simulationSubsystem;
     ApplicationContext appCTX = ApplicationContext.getInstance();
     OperatorInterface oi = new OperatorInterface();
 

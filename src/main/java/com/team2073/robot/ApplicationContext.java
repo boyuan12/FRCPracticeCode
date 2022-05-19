@@ -2,6 +2,7 @@ package com.team2073.robot;
 
 import com.revrobotics.CANSparkMax;
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;
+import com.team2073.robot.FalconSim.SimulationSubsystemFalcons;
 import edu.wpi.first.wpilibj.DigitalInput;
 
 public class ApplicationContext {
@@ -9,7 +10,7 @@ public class ApplicationContext {
     private CANSparkMax motor1;
     private CANSparkMax motor2;
     private Subsystem subsystem;
-    private SimulationSubsystem simulationSubsystem;
+    private SimulationSubsystemFalcons simulationSubsystem;
     private DigitalInput dI;
     private DigitalInput dI2;
     private final MotorType kMotorType = MotorType.kBrushless;
@@ -23,9 +24,9 @@ public class ApplicationContext {
         return instance;
     }
 
-    public SimulationSubsystem getSimulationSubsystem() {
+    public SimulationSubsystemFalcons getSimulationSubsystem() {
         if (simulationSubsystem == null) {
-            simulationSubsystem = new SimulationSubsystem();
+            simulationSubsystem = new SimulationSubsystemFalcons();
         }
         return simulationSubsystem;
     }
