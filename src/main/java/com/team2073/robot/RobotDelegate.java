@@ -1,11 +1,9 @@
 package com.team2073.robot;
 
 import com.team2073.common.robot.AbstractRobotDelegate;
-import com.team2073.robot.FalconSim.SimulationSubsystemFalcons;
 
 public class RobotDelegate extends AbstractRobotDelegate {
     Subsystem subsystem;
-    SimulationSubsystemFalcons simulationSubsystem;
     ApplicationContext appCTX = ApplicationContext.getInstance();
     OperatorInterface oi = new OperatorInterface();
 
@@ -14,9 +12,7 @@ public class RobotDelegate extends AbstractRobotDelegate {
     }
     @Override
     public void robotInit() {
-        simulationSubsystem = appCTX.getSimulationSubsystem();
         oi.init();
-        appCTX.getMotor1().getEncoder().setPosition(1000);
     }
 
     @Override
