@@ -1,7 +1,6 @@
 package com.team2073.robot;
 
 import com.revrobotics.CANSparkMax;
-import com.team2073.common.controlloop.PidfControlLoop;
 import com.team2073.common.periodic.AsyncPeriodicRunnable;
 
 
