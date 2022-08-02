@@ -20,12 +20,4 @@ public class RobotDelegate extends AbstractRobotDelegate {
 
     }
 
-
-    public enum AutoRun {
-        FIVEBALL,
-        FOUR_BALL_A,
-        FOURBALL_B,
-        CLOSE_SHOT,
-        TWOBALL;
-    }
 }
